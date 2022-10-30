@@ -10,8 +10,9 @@ export default function App() {
     inputValue: input
   }
 
+
   const filtered = list.filter((values) => {
-    return values.inputValue.toLowerCase().includes(input.toLowerCase()) 
+    return values.inputValue.toLowerCase().includes(input.toLowerCase())
   }) 
 
 const handleSubmit = (e) => {
@@ -19,6 +20,10 @@ const handleSubmit = (e) => {
 
     setList([...list, newInput])
     setInput("")
+}
+
+const handleClear = () => {
+  setList([])
 }
 
 
@@ -30,12 +35,14 @@ const handleSubmit = (e) => {
 
               <input type="text" 
               className="input" 
-              placeholder="Enter word..." 
+              placeholder="Enter & filtrate words..." 
               value={input} 
               onChange={(e) => setInput(e.target.value)}
               />
 
           </form>
+
+            <button onClick={handleClear}>Clear</button>
 
             {filtered.map((result, index) => {
 
@@ -43,13 +50,13 @@ const handleSubmit = (e) => {
                   result.inputValue.toLowerCase().indexOf(input.toLowerCase())
                 );
 
-                let endString = result.inputValue.substr(
-                  result.inputValue.toLowerCase().indexOf(input.toLowerCase()) +
-                  input.length
-                );
-                            
                 let highlight = result.inputValue.substr(
                   result.inputValue.toLowerCase().indexOf(input.toLowerCase()),
+                  input.length
+                );
+
+                let endString = result.inputValue.substr(
+                  result.inputValue.toLowerCase().indexOf(input.toLowerCase()) +
                   input.length
                 );
 

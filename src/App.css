@@ -1,4 +1,4 @@
-* {
+body {
   text-align: center;
   background-color: lightblue;
 }
@@ -7,7 +7,7 @@
   margin-top: 40px;
   background-color: white;
   height: 20px;
-  width: 200px;
+  width: 250px;
   border-radius: 20px;
   padding: 10px;
   font-size: 20px;
@@ -16,4 +16,14 @@
 .box {
   font-size: 20px;
   padding: 10px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
 }
