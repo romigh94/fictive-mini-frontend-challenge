@@ -23,7 +23,7 @@ const handleSubmit = (e) => {
 }
 
 const handleClear = () => {
-  setList([])
+    setList([])
 }
 
 
