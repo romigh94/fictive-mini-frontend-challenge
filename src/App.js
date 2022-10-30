@@ -5,6 +5,7 @@ export default function App() {
   
   const [list, setList] = useState([])
   const [input, setInput] = useState('')
+  const [error, setError] = useState('')
 
   const newInput = {
     inputValue: input
@@ -18,8 +19,21 @@ export default function App() {
 const handleSubmit = (e) => {
     e.preventDefault()
 
-    setList([...list, newInput])
+    if (!input) {
+      setError("Cannot be empty. Please type in a word!")
+    } else if (!input.match(/^[a-zA-Z]+$/)) {
+      setError("Cannot have numbers or symbols. Only letters!")
+    } else {
+      setList([...list, newInput])
+    }
+
     setInput("")
+
+}
+
+const handleChange = (e) => {
+  setInput(e.target.value)
+  setError("")
 }
 
 const handleClear = () => {
@@ -37,14 +51,17 @@ const handleClear = () => {
               className="input" 
               placeholder="Enter & filtrate words..." 
               value={input} 
-              onChange={(e) => setInput(e.target.value)}
+              onChange={handleChange}
               />
 
           </form>
 
-            <button onClick={handleClear}>Clear</button>
+              <h3>{error}</h3>
 
-            {filtered.map((result, index) => {
+              <button onClick={handleClear}>Clear</button>
+              
+
+          {filtered.map((result, index) => {
 
                 let startString = result.inputValue.substr(0,
                   result.inputValue.toLowerCase().indexOf(input.toLowerCase())
