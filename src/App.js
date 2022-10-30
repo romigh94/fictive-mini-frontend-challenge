@@ -15,10 +15,10 @@ export default function App() {
   }) 
 
 const handleSubmit = (e) => {
-  e.preventDefault()
+    e.preventDefault()
 
-  setList([...list, newInput])
-  setInput("")
+    setList([...list, newInput])
+    setInput("")
 }
 
 
